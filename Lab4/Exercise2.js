@@ -43,4 +43,5 @@ var observable = rx.Observable.create(observer=>{
     if(mem >= 4 && cpus >= 2)
     observer.next("Third way: system is checked successfully!")
 })
-observable.subscribe((x)=>{console.log(x)})
+observable.subscribe((x)=>{console.log(x+"eeee")})
+observable.subscribe((x)=>{console.log(x+"wwww")})
