@@ -1,7 +1,5 @@
 var express = require('express');
 var fetch = require('node-fetch')
-var bodyParser = require('body-parser');
-
 var router = express.Router();
 
 var jsonData = [
@@ -10,39 +8,60 @@ var jsonData = [
     { id: 3, name: "Saad saad", course: "cs572", grade: 100 },
 ]
 
-var urlparser = bodyParser.urlencoded({ extended: false })
-
 /* GET users listing. */
 router.get('/', function (req, res, next) {
     res.json(jsonData);
 });
-router.get('/:id', urlparser, function (req, res, next) {
 
+router.get('/:id', function (req, res, next) {
     var result;
     for (data in jsonData) {
         if (jsonData[data].id == req.params.id)
             result = jsonData[data]
     }
-
+    res.contentType("application/json")
+    res.status(200)
     res.json(result);
 });
-
+/**
+ * insert into the array
+ */
 router.post('/', function (req, res, next) {
-    res.json({ message: 'hooray! welcome to our api!' });
-
+    console.log(req.body)
+    jsonData.push(req.body)
+    res.contentType("application/json")
+    res.status(200)
+    res.json({ message: jsonData });
 });
-
+/**
+ * update record using id
+ */
 router.put('/:id', function (req, res, next) {
-    res.json({ message: 'hooray! welcome to our api!' });
-
+    for (data in jsonData) {
+        if (jsonData[data].id == req.params.id)
+             jsonData[data] = req.body
+    }
+    res.contentType("application/json")
+    res.status(200)
+    res.json({ message: jsonData });
 });
 
-router.delete('/', function (req, res, next) {
-    res.json({ message: 'hooray! welcome to our api!' });
+/**
+ * Delete recode using id
+ */
+router.delete('/:id', function (req, res, next) {
+    for (data in jsonData) {
+        if (jsonData[data].id == req.params.id)
+                jsonData.splice(data, data+1);
+            
+    }
 
+    res.contentType("application/json")
+    res.status(200)
+    res.json({ message: jsonData });
 });
 
 
 
 
-module.exports = route
+module.exports = router;
