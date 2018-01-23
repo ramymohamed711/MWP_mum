@@ -52,7 +52,7 @@ router.put('/:id', function (req, res, next) {
 router.delete('/:id', function (req, res, next) {
     for (data in jsonData) {
         if (jsonData[data].id == req.params.id)
-                jsonData.splice(data, data+1);
+                jsonData.splice(data, data);
             
     }
 
