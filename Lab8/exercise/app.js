@@ -32,6 +32,71 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 
+var MongoClient = require('mongodb').MongoClient;
+
+MongoClient.connect('mongodb://localhost:27017/test', function (err, client) {
+        if (err) throw new Error('Database failed to connect!');
+        var myDB = client.db('test');
+        return myDB
+        })
+
+
+//
+
+/* GET users listing. */
+router.get('crud/', function (req, res, next) {
+  //return all data from database 
+});
+
+router.get('crud/:id', function (req, res, next) {
+  var result;
+  for (data in jsonData) {
+      if (jsonData[data].id == req.params.id)
+         //return data from database code
+  }
+  res.contentType("application/json")
+  res.status(200)
+  res.json(result);
+});
+/**
+* insert into the array
+*/
+router.post('crud/', function (req, res, next) {
+  console.log(req.body)
+ //insert code
+  res.contentType("application/json")
+  res.status(200)
+  res.json({ message: jsonData });
+});
+/**
+* update record using id
+*/
+router.put('crud/:id', function (req, res, next) {
+  for (data in jsonData) {
+      if (jsonData[data].id == req.params.id)
+          //update code
+  }
+  res.contentType("application/json")
+  res.status(200)
+  res.json({ message: jsonData });
+});
+
+/**
+* Delete recode using id
+*/
+router.delete('crud/:id', function (req, res, next) {
+  for (data in jsonData) {
+      if (jsonData[data].id == req.params.id)
+              // delete code 
+          
+  }
+  res.contentType("application/json")
+  res.status(200)
+  res.json({ message: jsonData });
+});
+
+
+
 
 
 // catch 404 and forward to error handler
