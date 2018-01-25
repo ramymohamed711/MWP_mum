@@ -9,7 +9,6 @@ var router = express.Router();
 
 var index = require('./routes/index');
 
-var secret = require('./routes/secret');
 
 var app = express();
 
@@ -32,7 +31,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/secret', secret);
 
 
 
