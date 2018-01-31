@@ -1,0 +1,16 @@
+<app-counter>
+  Content of Component
+</app-counter>
+
+
+<h2>Parent value {{parentValue}}</h2>
+
+<app-counter2 [counter] = "0" (CounterChange)="getchange($event)">
+  Content of Component2
+</app-counter2>
+
+
+<h2>Parent value componentCounterValue  {{componentCounterValue}}</h2>
+<app-counter3 [counter] = [componentCounterValue] (CounterChange)="getchangecomp3($event)">
+  Content of Component3
+</app-counter3>
