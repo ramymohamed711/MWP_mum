@@ -7,6 +7,9 @@ import { CounterComponent } from './counter.component';
 import { Counter2Component } from './counter2.component';
 import { Counter3Component } from './counter3.component';
 import { MycomponentComponent } from './mycomponent.component';
+import { MyDirectiveDirective } from './my-directive.directive';
+import { MyvisibilityDirective } from './myvisibility.directive';
+import { MycolorDirective } from './mycolor.directive';
 
 
 @NgModule({
@@ -16,6 +19,9 @@ import { MycomponentComponent } from './mycomponent.component';
     Counter2Component,
     Counter3Component,
     MycomponentComponent,
+    MyDirectiveDirective,
+    MyvisibilityDirective,
+    MycolorDirective,
   ],
   imports: [
     BrowserModule , FormsModule
